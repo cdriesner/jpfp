@@ -1,0 +1,99 @@
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+ul {
+  display: table;
+  margin: 0 auto;
+}
+
+body {
+  margin: 0px;
+}
+
+#navBar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#counter {
+  margin: 10px;
+  padding: 0px;
+}
+
+#navLinks>a {
+  margin: 10px;
+  padding: 10px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  background-color: rgba(0, 0, 0, 0.192);
+  color: white;
+}
+
+#allStudentsPage{
+  background-image: linear-gradient(red,orange,yellow,green,blue,purple);
+  margin:0;
+}
+
+.collegeAbout>div>p {
+  font-size: 20px;
+}
+
+.collegeAbout>div {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.collegeAbout{
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 600px;
+}
+
+#studentsAttendingList{
+  border-style: solid;
+}
+
+.studentList{
+  max-width: 800px;
+  list-style-type: none;
+}
+
+.studentListImg{
+  height: 200px;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+.studentListItm{
+  background-color: grey;
+  margin: 10px;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: Black;
+}
+
+.studentListItm p{
+  font-size: 20px;
+}
+
+.every{
+  display: flex;
+}
+
+.other{
+  display: flex;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+html {
+  margin-top: 0;
+}
