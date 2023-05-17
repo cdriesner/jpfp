@@ -13,7 +13,6 @@ router.get('/', async (req,res,next)=>{
 
 router.post('/', async (req,res,next) => {
   try {
-    console.log(req.body);
     const student = students.create(req.body);
     res.send(student);
   } catch (error) {
@@ -25,6 +24,16 @@ router.get('/:id', async (req,res,next)=>{
   try {
     const data = await students.findByPk(req.params.id);
     res.send(data)
+  } catch (error) {
+    next(error);
+  }
+})
+
+router.delete('/:id', async (req,res,next)=>{
+  try {
+    const student = await students.findByPk(req.params.id);
+    await student.destroy();
+    res.sendStatus(204);
   } catch (error) {
     next(error);
   }

@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../database');
+const { DataTypes } = require("sequelize");
 
 const campuses = db.define('campuses', {
   name: {
@@ -22,9 +23,17 @@ const campuses = db.define('campuses', {
   },
   secondarycolor:{
     type:Sequelize.STRING
+  },
+  createdAt:{
+    type: Sequelize.DATE,
+    allownull:true
+  },
+  updatedAt:{
+    type: Sequelize.DATE,
+    allownull:true
   }
 },{
-  timestamps:false
+  onDelete: 'CASCADE',
 })
 
 module.exports = campuses;

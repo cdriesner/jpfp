@@ -1,8 +1,10 @@
 import React, {useState}from "react";
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { NavBar } from './index';
 import { v4 as uuidv4} from 'uuid'
+import everyOther from "../../Random_Scripts/everyOther";
+import { deleteStudent } from "../store/reducers/students";
 
 const SingleCampus = () => {
   const {campuses,students} = useSelector(state => state)
@@ -15,25 +17,42 @@ const SingleCampus = () => {
     }
   },[campuses]);
 
-  console.log(campus);
+  const dispatch = useDispatch();
+  let count = 1;
 
   return (
     <>
       <div style={{backgroundColor:campus.primarycolor}}>
         <NavBar/>
       </div>
-      <div className = "collegeAbout" style = {{backgroundImage:`url(${campus.image})`}}>
+      <div className = "collegeAbout" style = {{backgroundImage:`url(./pictures/${campus.image}.jpg)`}}>
         <div>
           <h1>{campus.name}</h1>
           <h2>{campus.address}</h2>
           <p>{campus.description}</p>
         </div>
       </div>
-      <div id="studentsAttendingList" style={{borderColor:campus.secondarycolor}}>
+      <div id="studentsAttendingList" style={{borderColor:campus.primarycolor, backgroundColor:campus.secondarycolor}}>
+        <h1 style ={{textAlign: "center"}}>STUDENTS</h1>
         <ul>
           {students.map((student)=>{
             if(student.campusId === campus.id){
-              return(<li key = {uuidv4()}><Link to ={`/students/${student.id}`}>{student.firstname}</Link></li>)
+              count++;
+              return(<li className = "studentListItm" key={uuidv4()}>
+              <div className = {everyOther(count)}>
+                <img className = "studentListImg" src = {`./people/${student.image}.jpg`}/>
+                <div>
+                  <Link to={`/students/${student.id}`}>
+                    <h2>
+                      {student.firstname}
+                    </h2>
+                  </Link>
+                  <h3><Link></Link></h3>
+                  <p>{student.quote}</p>
+                  <button onClick={()=>{dispatch(deleteStudent(student))}}>Delete</button>
+                </div>
+              </div>
+            </li>)
             }else{
               return
             }

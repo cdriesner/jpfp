@@ -23,7 +23,16 @@ const SingleStudent = () => {
   return (
     <>
       <NavBar/>
-      <h1>{student.firstname} attends <Link to={`/campuses/${campus.id}`}>{campus.name}</Link></h1>
+      <div id = "singleStudentPage">
+        <img src = {`./people/${student.image}.jpg`}/>
+        <div>
+          <h1>{student.firstname} {student.lastname} attends <Link to={`/campuses/${campus.id}`}>{campus.name}</Link></h1>
+          <h2>{student.quote}</h2>
+          <h3>{student.email}</h3>
+          <h4>GPA: {student.gpa}</h4>
+        </div>
+
+      </div>
     </>
   )
 }

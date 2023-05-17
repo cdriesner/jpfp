@@ -21,6 +21,15 @@ const createStudent = createAsyncThunk('createStudent', async (student)=>{
     }
 })
 
+const deleteStudent = createAsyncThunk('deleteStudent', async (student)=>{
+    try {
+        await axios.delete(`api/students/${student.id}`);
+        return student;
+    } catch (error) {
+        next(error);
+    }
+})
+
 const studentsSlice = createSlice({
     name: 'students',
     initialState,
@@ -32,8 +41,11 @@ const studentsSlice = createSlice({
         builder.addCase(createStudent.fulfilled, (state,action)=>{
             return [...state, action.payload];
         })
+        builder.addCase(deleteStudent.fulfilled, (state, action)=> {
+            return state.filter(todo => todo.id !== action.payload.id);
+        })
     }
 })
 
 export default studentsSlice;
-export {createStudent};
+export {createStudent, deleteStudent};

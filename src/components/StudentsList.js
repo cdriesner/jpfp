@@ -1,18 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import { Link } from "react-router-dom";
 import { NavBar } from "./index";
 import everyOther from "../../Random_Scripts/everyOther"
+import { deleteStudent } from "../store/reducers/students";
 
 const StudentsList = () => {
   const {students} = useSelector(state => state);
+  const dispatch = useDispatch();
   let count = 1;
   return(
     <div id="allStudentsPage">
-      <NavBar/>
-      <Link to='/students/create' style={{margin: '10px'}}>Add Student</Link>
-      <h1 style={{margin: '10px'}}>students</h1>
+      <NavBar props = {'All Students'}/>
+      <Link id ="addStudentLink" to='/students/create' style={{margin: '10px'}}>Add Student</Link>
       <ul className="studentList">
         {students.map((student)=>{
           count++;
@@ -26,10 +27,9 @@ const StudentsList = () => {
                       {student.firstname}
                     </h2>
                   </Link>
-                  <h3><Link></Link></h3>
                   <p>{student.quote}</p>
+                  <button onClick={()=>{dispatch(deleteStudent(student))}}>Delete</button>
                 </div>
-
               </div>
             </li>
           );

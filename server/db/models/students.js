@@ -1,5 +1,6 @@
 const Sequalize = require('sequelize');
 const db = require('../database');
+const { DataTypes } = require("sequelize");
 
 const students = db.define('students', {
   firstname:{
@@ -23,9 +24,16 @@ const students = db.define('students', {
   },
   quote: {
     type:Sequalize.STRING,
+  },
+  createdAt:{
+    type: Sequalize.DATE,
+    allownull:true
+  },
+  updatedAt:{
+    type: Sequalize.DATE,
+    allownull:true
   }
 },{
-  timestamps:false
 })
 
 module.exports = students;

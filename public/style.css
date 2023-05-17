@@ -1,29 +1,44 @@
-a {
+a:visited {
+  color: inherit;
   text-decoration: none;
 }
 
-a:visited {
-  color: inherit;
-}
-
 ul {
-  display: table;
+  list-style-type: none;
+  display: table; 
   margin: 0 auto;
 }
 
 body {
   margin: 0px;
+  font-family: 'Wix Madefor Display', sans-serif;
+}
+
+#navContainer{
+  position: sticky;
+  left: 0%;
+  top: 0%;
 }
 
 #navBar {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
+  background-image: linear-gradient(black,rgba(255, 255, 255, 0));
+  color:white;
+}
+
+#navBar>h1{
+  text-shadow: -30px -30px 0px #FF0000, -20px -20px 0px orange,-10px -10px 0px yellow,10px 10px 0px green,20px 20px 0px blue,30px 30px 0px purple;
 }
 
 #counter {
   margin: 10px;
-  padding: 0px;
+  padding: 10px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  background-color: rgba(0, 0, 0, 0.192);
 }
 
 #navLinks>a {
@@ -33,12 +48,130 @@ body {
   border-style: solid;
   border-width: 2px;
   background-color: rgba(0, 0, 0, 0.192);
-  color: white;
 }
 
 #allStudentsPage{
   background-image: linear-gradient(red,orange,yellow,green,blue,purple);
   margin:0;
+}
+
+#deletePopup1{
+  position: fixed;
+  left: 0%;
+  top: 0%;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.452);
+}
+
+#deletePopup2{
+  position: fixed;
+  left: 25%;
+  top: 25%;
+  width: 50%;
+  height: 50%;
+  background-color: rgb(207, 207, 207);
+  border-style:outset;
+  border-width: 15px;
+  border-color: red;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#deletePopup2>h1{
+  color: red;
+  margin:30px;
+  font-size: 70px;
+}
+
+#popupDeleteButton{
+  height: 100px;
+  width: 200px;
+  margin: 0 auto;
+  font-size: 50px;
+  border-color: red;
+  border-width: 5px;
+}
+
+#popupCloseButton{
+  position: fixed;
+  top: 28%;
+  right: 25.5%;
+}
+
+#campusListItm{
+  height: 200;
+  border-style: solid;
+  border-width: 10px;
+  margin: 50px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+#createPage form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#createPage input{
+  height: 50px;
+  width: 300px;
+  margin: 15px;
+}
+
+#createPage select{
+  height: 50px;
+  width: 308px;
+  margin: 15px;
+}
+
+#createPage button{
+  height: 50px;
+  width: 308px;
+  margin: 15px;
+}
+
+#quoteInput{
+  height: 150px;
+}
+
+#addStudentLink{
+  margin: 10px;
+  padding: 10px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  background-color: rgba(0, 0, 0, 0.192);
+  color: white;
+  position: sticky;
+  left: 2%;
+  top: 12%;
+}
+
+#addCampusLink{
+  margin: 10px;
+  padding: 10px;
+  border-color: black;
+  border-style: solid;
+  border-width: 2px;
+  background-color: rgba(0, 0, 0, 0.192);
+  color: white;
+  position: sticky;
+  left: 2%;
+  top: 12%;
+}
+
+#singleStudentPage {
+  display: flex;
+}
+
+#singleStudentPage img{
+  height: 600px;
+  margin: 20px;
+  border-radius: 30px;
+  box-shadow: 10px 10px 10px #222222;
 }
 
 .collegeAbout>div>p {
@@ -58,11 +191,11 @@ body {
 
 #studentsAttendingList{
   border-style: solid;
+  border-width: 20px;
 }
 
 .studentList{
   max-width: 800px;
-  list-style-type: none;
 }
 
 .studentListImg{
