@@ -1,5 +1,5 @@
 import React from 'react';
-import {StudentsList, CampusesList, SingleStudent, SingleCampus, CreateStudent, CreateCampus} from'./index';
+import {StudentsList, CampusesList, SingleStudent, SingleCampus, CreateStudent, CreateCampus, UpdateStudent, UpdateCampus} from'./index';
 import { fetchStudents } from '../store/reducers/students';
 import { useDispatch } from 'react-redux';
 import { fetchCampuses } from '../store/reducers/campuses';
@@ -25,6 +25,8 @@ const Main = () => {
                 <Route path='/campuses/:id' element={<SingleCampus/>}/>
                 <Route path='/students/create' element={<CreateStudent/>}/>
                 <Route path='/campuses/create' element={<CreateCampus/>}/>
+                <Route path='/students/update/:id' element={<UpdateStudent/>}/>
+                <Route path='/campuses/update/:id' element={<UpdateCampus/>}/>
             </Routes>
         </div>
 

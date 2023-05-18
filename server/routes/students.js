@@ -4,7 +4,7 @@ const {students} = require('../db/index');
 
 router.get('/', async (req,res,next)=>{
   try {
-    const data = await students.findAll();
+    const data = await students.findAll({order: [['id','DESC']]});
     res.send(data);
   } catch (error) {
     next(error);
@@ -38,5 +38,16 @@ router.delete('/:id', async (req,res,next)=>{
     next(error);
   }
 })
+
+router.put('/:id', async(req, res, next)=> {
+  try {
+    const student = await students.findByPk(req.params.id);
+    await student.update(req.body);
+    res.send(student);
+  }
+  catch(error){
+    next(error);
+  }
+});
 
 module.exports = router;

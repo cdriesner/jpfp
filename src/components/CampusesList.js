@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { NavBar } from './index';
 import { deleteCampus } from "../store/reducers/campuses";
 
@@ -32,12 +32,12 @@ const WarningPopup = (props) =>{
 
 const CampusesList = () => {
   const {campuses, students} = useSelector(state => state);
+  const navigate = useNavigate();
   let colors = '';
   campuses.map((campus)=>{
     colors += `${campus.secondarycolor}, `
   })
   colors = colors.substring(0,colors.length - 2)
-  console.log(colors)
   return(
     <div style = {{backgroundImage: `linear-gradient(black,black,${colors},black)`}}>
       <NavBar props={'All Campuses'}/>
@@ -51,6 +51,7 @@ const CampusesList = () => {
               </Link>
               <h3>Students attending: {students.filter(student=>student.campusId === campus.id).length}</h3>
               <WarningPopup props = {campus}/>
+              <button onClick={()=>{navigate(`/campuses/update/${campus.id}`)}}>Update</button>
             </li>
           );
         })}

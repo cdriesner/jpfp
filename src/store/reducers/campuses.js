@@ -30,6 +30,15 @@ const deleteCampus = createAsyncThunk('deleteCampus', async (campus)=>{
     }
 })
 
+const updateCampus = createAsyncThunk('updateCampus', async (campus)=> {
+    try {
+        const response = await axios.put(`/api/campuses/${campus.id}`, campus)
+        return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+});
+
 const campusesSlice = createSlice({
     name: 'campuses',
     initialState,
@@ -42,10 +51,13 @@ const campusesSlice = createSlice({
             return [...state, action.payload];
         })
         builder.addCase(deleteCampus.fulfilled, (state, action)=> {
-            return state.filter(todo => todo.id !== action.payload.id);
+            return state.filter(campus => campus.id !== action.payload.id);
+        })
+        builder.addCase(updateCampus.fulfilled, (state, action)=> {
+            return state.map(campus => campus.id === action.payload.id ? action.payload: campus);
         })
     }
 })
 
 export default campusesSlice;
-export {createCampus, deleteCampus};
+export {createCampus, deleteCampus, updateCampus};

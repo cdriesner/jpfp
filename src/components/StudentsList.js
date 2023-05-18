@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import { NavBar } from "./index";
 import everyOther from "../../Random_Scripts/everyOther"
 import { deleteStudent } from "../store/reducers/students";
+import { useNavigate } from "react-router-dom";
 
 const StudentsList = () => {
   const {students} = useSelector(state => state);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let count = 1;
   return(
     <div id="allStudentsPage">
@@ -22,13 +24,10 @@ const StudentsList = () => {
               <div className = {everyOther(count)}>
                 <img className = "studentListImg" src = {`./people/${student.image}.jpg`}/>
                 <div>
-                  <Link to={`/students/${student.id}`}>
-                    <h2>
-                      {student.firstname}
-                    </h2>
-                  </Link>
+                  <Link to={`/students/${student.id}`}><h2>{student.firstname}</h2></Link>
                   <p>{student.quote}</p>
                   <button onClick={()=>{dispatch(deleteStudent(student))}}>Delete</button>
+                  <button onClick={()=>{navigate(`/students/update/${student.id}`)}}>Update</button>
                 </div>
               </div>
             </li>

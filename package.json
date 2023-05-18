@@ -4,11 +4,11 @@
   "description": "A review time project",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build-watch & npm run start-server ",
+    "start": "npm run seed && npm run build-watch",
     "build-watch": "webpack -w",
     "seed": "psql -d acme_schools_db -a -f ./seed.sql",
     "delete-tables": "psql -d acme_schools_db -a -f ./delete.sql",
-    "start-server": "nodemon --watch server -e js,html server/index.js"
+    "start-server": "npm run delete-tables && nodemon --watch server -e js,html server/index.js"
   },
   "keywords": [],
   "author": "",

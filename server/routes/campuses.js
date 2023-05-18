@@ -4,7 +4,7 @@ const {campuses} = require('../db/index');
 
 router.get('/', async (req,res,next)=>{
   try {
-    const data = await campuses.findAll();
+    const data = await campuses.findAll({order: [['id','DESC']]});
     res.send(data);
   } catch (error) {
     next(error);
@@ -49,5 +49,16 @@ router.get('/:id/students', async (req,res,next)=>{
     next(error);
   }
 })
+
+router.put('/:id', async(req, res, next)=> {
+  try {
+    const campus = await campuses.findByPk(req.params.id);
+    await campus.update(req.body);
+    res.send(campus);
+  }
+  catch(error){
+    next(error);
+  }
+});
 
 module.exports = router;

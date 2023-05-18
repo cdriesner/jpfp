@@ -1,4 +1,8 @@
-# Junior Phase Final Project
+# TO START THE WEBSITE
+
+1. npm run start-server
+2. in a new terminal npm run start
+3. open localhost:3000
 
 ## Getting started
 
